@@ -1,0 +1,514 @@
+/* ======================
+   RESET & BASE STYLES
+   ====================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    position: relative;
+}
+
+/* ======================
+   PAGE TRANSITIONS
+   ====================== */
+.page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 极速赛车开奖直播 极速赛车开奖结果 极速赛车开奖记录, 0.94);
+    transform: translateY(100vh);
+}
+
+.page.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.page.exiting {
+    transform: translateY(-100vh);
+}
+
+/* ======================
+   LANDING PAGE STYLES
+   ====================== */
+#landing-page {
+    background-image: url('https://c4.wallpaperflare.com/wallpaper/313/540/921/threadless-minimalism-humor-surprised-wallpaper-preview.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    z-index: 1;
+}
+
+.landing-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+
+.main-title {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    letter-spacing: -0.02em;
+}
+
+.continue-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.continue-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+}
+
+.continue-button:active {
+    transform: translateY(0);
+}
+
+/* ======================
+   CONTENT PAGE STYLES
+   ====================== */
+#content-page {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background Media Styles */
+.background-media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.video-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+}
+
+.gif-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 2;
+}
+
+.background-gif {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    mix-blend-mode: overlay;
+}
+
+/* Content Overlay - Updated grid structure */
+.content-overlay {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-areas: 
+        "social ."
+        "left-content ."
+        "center-copy .";
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 50% 50%;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Social Icons */
+.social-icons {
+    grid-area: social;
+    display: flex;
+    gap: 1rem;
+    align-self: start;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.social-icon svg {
+    width: 24px;
+    height: 24px;
+    color: white;
+}
+
+.social-icon.twitter:hover {
+    background: rgba(29, 161, 242, 0.8);
+    border-color: #1da1f2;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(29, 161, 242, 0.3);
+}
+
+.social-icon.tiktok:hover {
+    background: rgba(255, 0, 80, 0.8);
+    border-color: #ff0050;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 0, 80, 0.3);
+}
+
+/* Left Content - Updated positioning */
+.left-content {
+    grid-area: left-content;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 2rem;
+}
+
+.text-box {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2.5rem;
+    max-width: 90%;
+    text-align: center;
+    color: white;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.text-box h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #f8f9fa;
+}
+
+.text-box p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.37);
+}
+
+.text-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* Centered Copy Section - Updated positioning */
+.center-copy {
+    grid-area: center-copy;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    padding-bottom: 1rem;
+}
+
+.copy-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ca-label {
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.copy-box {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#copy-text {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    color: #333;
+    min-width: 150px;
+}
+
+.copy-button {
+    background: rgba(74, 144, 226, 0.8);
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.copy-button:hover {
+    background: rgba(74, 144, 226, 1);
+    transform: scale(1.05);
+}
+
+.copy-button svg {
+    color: white;
+}
+
+/* Audio Toggle Button */
+.audio-toggle {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.audio-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+.audio-toggle.muted {
+    background: rgba(220, 38, 38, 0.8);
+    border-color: rgba(220, 38, 38, 0.6);
+}
+
+.audio-toggle svg {
+    color: white;
+    transition: all 0.2s ease;
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: rgba(34, 197, 94, 0.9);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 500;
+    z-index: 1001;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3);
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ======================
+   RESPONSIVE DESIGN
+   ====================== */
+@media (max-width: 768px) {
+    .content-overlay {
+        grid-template-areas: 
+            "social"
+            "left-content"
+            "center-copy";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .social-icons {
+        justify-self: center;
+    }
+    
+    .video-container, .gif-container {
+        position: relative;
+        width: 100%;
+        height: 50vh;
+    }
+    
+    .left-content {
+        justify-content: center;
+        padding-left: 0;
+    }
+    
+    .text-box {
+        padding: 1.5rem;
+        max-width: 100%;
+        text-align: center;
+    }
+    
+    .text-box h2 {
+        font-size: 1.4rem;
+    }
+    
+    .text-box p {
+        font-size: 0.9rem;
+    }
+    
+    .copy-container {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.8rem;
+    }
+    
+    .background-gif {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .audio-toggle {
+        width: 50px;
+        height: 50px;
+        bottom: 1rem;
+        right: 1rem;
+    }
+    
+    .main-title {
+        font-size: clamp(2rem, 10vw, 3rem);
+        margin-bottom: 1.5rem;
+    }
+    
+    .continue-button {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-overlay {
+        padding: 0.5rem;
+    }
+    
+    .text-box {
+        padding: 1rem;
+    }
+    
+    .social-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .social-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    #copy-text {
+        min-width: 120px;
+        font-size: 0.85rem;
+    }
+}
+
+.center-gif {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    max-width: 300px; /* Adjust as needed */
+    max-height: 300px; /* Adjust as needed */
+    border-radius: 0px; /* Optional: rounded corners */
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3); /* Optional: shadow */
+}
+
+.neon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #000;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+.neon-text {
+    font-size: 4rem;
+    color: #fff;
+    text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
+    }
+    100% {
+        text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 40px #00d4ff, 0 0 80px #00d4ff, 0 0 160px #00d4ff;
+    }
+}
